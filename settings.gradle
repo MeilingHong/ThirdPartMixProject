@@ -1,0 +1,1 @@
+include ':app', ':qqsuportlibrary', ':weixinsupportlibrary', ':weibosupportlibrary', ':commonlibrary'
