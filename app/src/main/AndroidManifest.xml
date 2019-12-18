@@ -49,12 +49,17 @@
             </intent-filter>
         </activity>
 
-        <!-- 微信相关的类需要在接入的APP中进行声明 -->
+        <!-- 微信相关的类需要在接入的APP中进行声明
+        android:exported="true" 属性必须要要声明，否则回调的结果将无法获取；
+        申请时，微信的签名使用的MD5，建议使用小写（微信签名工具拿到的就是小写）
+        -->
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- QQ -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"

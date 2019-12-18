@@ -28,6 +28,7 @@ import com.meiling.weixin.common.callback.info.WeixinInfoCallback;
 import com.meiling.weixin.common.callback.share.WeixinShareCallback;
 import com.meiling.weixin.login.WeixinUtil;
 import com.meiling.weixin.share.WeixinShareUtil;
+import com.tencent.connect.share.QQShare;
 import com.thgy.ulord.thirdpart.ThirdPartInfo;
 
 import butterknife.BindView;
@@ -237,12 +238,14 @@ public class MainActivity extends AppCompatActivity implements
             }
             case R.id.qqShareImg: {
                 thidPartType = ThirdPartInfo.ThidPartType.QQ_SHARE;
-                QQShareUtil.getInstances().shareQQText(this, "标题", null, "文字分享的描述",
-                        false, null, false);
+                QQShareUtil.getInstances().shareQQText(this, "标题", "http://www.iudfs.com:666/images/15724227076.png", "文字分享的描述",
+                        false, "http://www.iudfs.com:666/images/15724227076.png", false);
                 break;
             }
             case R.id.qqShareUrl: {
                 thidPartType = ThirdPartInfo.ThidPartType.QQ_SHARE;
+                QQShareUtil.getInstances().shareQQText(this, "标题", "https://ushare.org/article/07310020191028154500042957", "文字分享的描述",
+                        false, null, false);
                 break;
             }
             //-------------------------------------------------------------

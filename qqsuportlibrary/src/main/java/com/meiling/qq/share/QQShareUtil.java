@@ -147,6 +147,38 @@ public class QQShareUtil implements QQShareCallback {
         }
     }
 
+    public void shareQQText(Activity activity, String title, String targetUrl, String summary, boolean isLocalImg, String imgUrl, boolean isToQzone,int shareType) {
+        if (mTencent != null) {
+            final Bundle params = new Bundle();
+
+            /**
+             * 下面三个参数是必须全部要传的，不能够为空
+             */
+            params.putString(QQShare.SHARE_TO_QQ_TITLE, title.toString());
+            params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, targetUrl != null ? targetUrl.toString() : "");// 这个参数必须是一个链接
+            params.putString(QQShare.SHARE_TO_QQ_SUMMARY, summary.toString());
+
+            if (isLocalImg) {
+                if (imgUrl != null && imgUrl.length() > 0) {
+                    params.putString(QQShare.SHARE_TO_QQ_IMAGE_LOCAL_URL, imgUrl);
+                }
+            } else {
+                if (imgUrl != null && imgUrl.length() > 0 && imgUrl.toLowerCase().startsWith("http")) {
+                    params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, imgUrl);
+                }
+            }
+
+            params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, shareType);
+            params.putInt(QQShare.SHARE_TO_QQ_EXT_INT, mExtarFlag);
+
+            if (isToQzone) {
+                mTencent.shareToQzone(activity, params, shareResultListener);
+            } else {
+                mTencent.shareToQQ(activity, params, shareResultListener);
+            }
+        }
+    }
+
     public void shareQQImage() {
 
     }
